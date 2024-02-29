@@ -1,0 +1,24 @@
+/* Implemente uma função chamada chequeAnagrama que aceita duas strings
+como argumentos e retorna true se as duas strings são anagramas uma da
+outra, e false caso contrário.
+ Um anagrama é uma palavra ou frase formada pela transposição das letras
+de outra palavra ou frase, usando todas as letras originais exatamente uma
+vez.
+Exemplo:
+ Entrada: listen e silent
+  Saída: true */
+
+  function chequeAnagrama(str1, str2) {
+  if (str1.length !== str2.length) {
+      return false;
+  }
+  const convArrStr1 = str1.toLowerCase().split('').sort().join('');
+  const convArrStr2 = str2.toLowerCase().split('').sort().join('');
+  return convArrStr1 === convArrStr2;
+}
+
+// Não altere as linhas abaixo.
+var palavra1 = prompt("Digite a primeira palavra.");
+var palavra2 = prompt("Digite a segunda palavra.");
+
+console.log(chequeAnagrama(palavra1, palavra2));
