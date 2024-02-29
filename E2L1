@@ -1,0 +1,16 @@
+function removeDuplicados(arr) {
+    const elementosUnicos = {}; 
+    const listaSemRepetir = [];     
+    for (let i = 0; i < arr.length; i++) {
+        const elementos = arr[i];        
+        if (!elementosUnicos[elementos]) {            
+          listaSemRepetir.push(elementos);            
+          elementosUnicos[elementos] = true;
+        }
+    }
+    return listaSemRepetir;
+}
+// Não altere as linhas abaixo.
+var itens = prompt("Digite uma lista de itens");
+itens = itens.replace(/\s/g, '').split(",");
+console.log(removeDuplicados(itens));
