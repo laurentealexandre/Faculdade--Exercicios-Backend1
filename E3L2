@@ -1,0 +1,51 @@
+/*Implemente uma função chamada encontreSubstring que aceita uma string 's' e
+uma lista de palavras 'words' como argumentos. A função deve retornar todas as
+posições iniciais na string 's' onde uma substring formada pela concatenação de
+todos os elementos da lista 'words' ocorre. As palavras na lista 'words' podem
+aparecer em qualquer ordem e não devem se sobrepor na string 's'.
+● Exemplo:
+○ Entrada:
+■ barfoothefoobarman
+■ foo, bar
+○ Saída: [0, 9]*/
+
+function encontreSubstring(s, words) {
+  const resultado = [];
+  if (s.length === 0 || words.length === 0) {
+      return resultado;
+  }
+
+  const tamanhoWord = words[0].length;
+  const tamanhoTotal = words.reduce((acc, word) => acc + word.length, 0);
+
+  for (let i = 0; i <= s.length - tamanhoTotal; i++) {
+      const subString = s.substring(i, i + tamanhoTotal);
+      const lista1 = [...words];
+      let validado = true;
+
+      for (let j = 0; j < subString.length; j += tamanhoWord) {
+          const word = subString.substring(j, j + tamanhoWord);
+          const indice = lista1.indexOf(word);
+          if (indice !== -1) {
+            lista1.splice(indice, 1);
+          } else {
+            validado = false;
+              break;
+          }
+      }
+
+      if (validado && lista1.length === 0) {
+          resultado.push(i);
+      }
+  }
+
+  return resultado;
+  
+}
+
+// Não altere as linhas abaixo.
+const s = prompt("Digite a string");
+let words = prompt("Digite a lista de palavras.");
+  words = words.replace(/\s/g, '').split(",");
+
+console.log(encontreSubstring(s, words));
