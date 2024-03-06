@@ -1,0 +1,26 @@
+/* Implemente uma função chamada elementosMaisFrequentes que aceita
+um array de números inteiros e um número inteiro k como argumentos. A
+função deve retornar um array contendo os k elementos mais frequentes do
+array de entrada, em ordem decrescente de frequência. Se houver mais de k
+elementos com a mesma frequência máxima, retorne os k elementos na
+ordem em que eles foram inseridos.
+● Exemplo:
+○ Entrada:
+■ 1, 1, 2, 2, 3
+■ 2
+○ Saída: [ 1, 2 ]
+const contagemElementos = new Map();*/
+
+  
+    for (const item of lista) {
+        const itemTratado = item.trim(); // Remover espaços em branco extras
+        contagemElementos.set(itemTratado, (contagemElementos.get(itemTratado) || 0) + 1);
+    }
+  
+    const arrayFrequencia = [...contagemElementos.entries()];
+  
+    arrayFrequencia.sort((a, b) => b[1] - a[1]);
+  
+    const resultadoFinal = arrayFrequencia.slice(0, k).map(pair => `'${pair[0]}'`);
+
+    return resultadoFinal;
