@@ -1,0 +1,14 @@
+/* Implemente uma função chamada `reverteString` que aceita uma string
+como argumento e retorna a mesma string com seus caracteres invertidos.
+● Exemplo:
+○ Entrada: hello
+○ Saída: olleh*/
+
+function reverteString(str) {
+  return str.split('').reverse().join('');
+}
+
+// Não altere as linhas abaixo.
+const string = prompt("Digite uma string para ser revertida");
+
+console.log(reverteString(string));
